@@ -1,5 +1,7 @@
-com.arushlab.android:xml/image_share_filepaths = 0x7f0d0000
+com.arushlab.android:xml/image_share_filepaths = 0x7f0d0002
+com.arushlab.android:xml/data_extraction_rules = 0x7f0d0001
 com.arushlab.android:styleable/NavArgument = 0x7f0c000d
+com.arushlab.android:xml/backup_rules = 0x7f0d0000
 com.arushlab.android:styleable/GradientColorItem = 0x7f0c000b
 com.arushlab.android:styleable/Fragment = 0x7f0c0008
 com.arushlab.android:styleable/FontFamilyFont = 0x7f0c0007
