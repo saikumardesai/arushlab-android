@@ -44,12 +44,12 @@
 28        android:extractNativeLibs="false"
 29        android:fullBackupContent="@xml/backup_rules"
 29-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:14:9-54
-30        android:icon="@mipmap/ic_launcher"
-30-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:15:9-43
+30        android:icon="@android:drawable/sym_def_app_icon"
+30-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:15:9-58
 31        android:label="@string/app_name"
 31-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:16:9-41
-32        android:roundIcon="@mipmap/ic_launcher_round"
-32-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:17:9-54
+32        android:roundIcon="@android:drawable/sym_def_app_icon"
+32-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:17:9-63
 33        android:supportsRtl="true"
 33-->/home/saikumar/Music/arushlab-android/app/src/main/AndroidManifest.xml:18:9-35
 34        android:testOnly="true"

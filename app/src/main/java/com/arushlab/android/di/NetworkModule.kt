@@ -8,6 +8,8 @@ import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.gotrue.Auth
+import io.github.jan.supabase.gotrue.auth
 import javax.inject.Singleton
 
 @Module
@@ -17,9 +19,6 @@ object NetworkModule {
     // Note: Provide valid Supabase URL and Key securely in production (e.g., via BuildConfig)
     private val SUPABASE_URL = com.arushlab.android.BuildConfig.SUPABASE_URL
     private val SUPABASE_KEY = com.arushlab.android.BuildConfig.SUPABASE_KEY
-
-import io.github.jan.supabase.gotrue.Auth
-import io.github.jan.supabase.gotrue.auth
 
     @Provides
     @Singleton
