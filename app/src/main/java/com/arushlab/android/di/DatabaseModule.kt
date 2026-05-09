@@ -22,7 +22,9 @@ object DatabaseModule {
             context,
             ArushLabDatabase::class.java,
             "arushlab_db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides

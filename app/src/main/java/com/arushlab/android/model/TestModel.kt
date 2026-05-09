@@ -5,10 +5,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TestModel(
-    @SerialName("id") val id: String,
+    @SerialName("id") val id: Int,
     @SerialName("name") val name: String,
     @SerialName("price") val price: Double,
     @SerialName("category") val category: String,
-    @SerialName("description") val description: String? = null,
-    @SerialName("image_url") val imageUrl: String? = null
+    @SerialName("is_active") val isActive: Boolean = true,
+    @SerialName("created_at") val createdAt: String? = null
 )

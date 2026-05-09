@@ -11,6 +11,9 @@ interface TestDao {
     @Query("SELECT * FROM tests ORDER BY name ASC")
     fun getAllTests(): Flow<List<TestEntity>>
 
+    @Query("SELECT * FROM tests ORDER BY name ASC")
+    suspend fun getAllTestsOnce(): List<TestEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(tests: List<TestEntity>)
 

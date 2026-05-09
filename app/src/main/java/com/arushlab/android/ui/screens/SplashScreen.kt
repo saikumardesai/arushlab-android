@@ -3,7 +3,6 @@ package com.arushlab.android.ui.screens
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -13,12 +12,11 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.arushlab.android.ui.theme.PrimaryRed
+import com.arushlab.android.ui.theme.*
 import com.arushlab.android.viewmodel.AuthViewModel
 import io.github.jan.supabase.gotrue.SessionStatus
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -34,13 +32,13 @@ fun SplashScreen(
 
     val alphaAnim = animateFloatAsState(
         targetValue = if (startAnimation) 1f else 0f,
-        animationSpec = tween(durationMillis = 1500),
+        animationSpec = tween(durationMillis = 1200),
         label = "alpha"
     )
 
     val scaleAnim = animateFloatAsState(
-        targetValue = if (startAnimation) 1f else 0.5f,
-        animationSpec = tween(durationMillis = 1500, easing = FastOutSlowInEasing),
+        targetValue = if (startAnimation) 1f else 0.3f,
+        animationSpec = tween(durationMillis = 1200, easing = FastOutSlowInEasing),
         label = "scale"
     )
 
@@ -63,7 +61,7 @@ fun SplashScreen(
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color.White, Color(0xFFFFF0F0))
+                    colors = listOf(PrimaryRed, PrimaryRedLight, PrimaryAccent)
                 )
             ),
         contentAlignment = Alignment.Center
@@ -74,26 +72,30 @@ fun SplashScreen(
                 .alpha(alphaAnim.value)
                 .scale(scaleAnim.value)
         ) {
-            // Use standard Android icon if custom not available
-            Icon(
-                painter = painterResource(id = android.R.drawable.ic_dialog_info),
-                contentDescription = "Logo",
-                modifier = Modifier.size(100.dp),
-                tint = PrimaryRed
-            )
-            Spacer(modifier = Modifier.height(24.dp))
+            // Lab emoji logo
+            Text("🔬", fontSize = 72.sp)
+            Spacer(modifier = Modifier.height(20.dp))
             Text(
-                text = "ARUSH Lab & Diagnostics",
-                style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
+                text = "ARUSH Lab",
+                style = MaterialTheme.typography.displayLarge.copy(
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.White,
+                    letterSpacing = (-1).sp
                 )
             )
-            Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "World-Class Diagnostics at Your Doorstep",
+                text = "& Diagnostics",
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.Normal,
+                    color = Color.White.copy(alpha = 0.85f),
+                    letterSpacing = 2.sp
+                )
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = "World-Class Diagnostics\nat Your Doorstep",
                 style = MaterialTheme.typography.bodyLarge.copy(
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    color = Color.White.copy(alpha = 0.7f)
                 ),
                 textAlign = TextAlign.Center
             )

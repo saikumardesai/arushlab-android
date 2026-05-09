@@ -28,7 +28,11 @@ object NetworkModule {
             supabaseKey = SUPABASE_KEY
         ) {
             install(Postgrest)
-            install(Auth)
+            install(Auth) {
+                // Disable auto-refresh to reduce background network calls
+                // and prevent unnecessary token refresh rate-limit hits
+                alwaysAutoRefresh = false
+            }
         }
     }
 

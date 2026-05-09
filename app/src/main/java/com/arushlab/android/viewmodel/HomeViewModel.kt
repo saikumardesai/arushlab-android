@@ -24,6 +24,12 @@ class HomeViewModel @Inject constructor(
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
+    private val _selectedCategory = MutableStateFlow("All")
+    val selectedCategory: StateFlow<String> = _selectedCategory.asStateFlow()
+
+    private val _categories = MutableStateFlow(listOf("All"))
+    val categories: StateFlow<List<String>> = _categories.asStateFlow()
+
     init {
         fetchTests()
     }
@@ -35,7 +41,11 @@ class HomeViewModel @Inject constructor(
                 result.fold(
                     onSuccess = { tests ->
                         allTests = tests
-                        _uiState.value = UiState.Success(tests)
+                        
+                        val uniqueNames = tests.map { it.name }.filter { it.isNotBlank() }.distinct().sorted()
+                        _categories.value = listOf("All") + uniqueNames
+                        
+                        applyFilters()
                     },
                     onFailure = { error ->
                         _uiState.value = UiState.Error(error.localizedMessage ?: "Failed to fetch tests")
@@ -47,18 +57,31 @@ class HomeViewModel @Inject constructor(
 
     fun onSearchQueryChanged(query: String) {
         _searchQuery.value = query
-        filterTests(query)
+        applyFilters()
     }
 
-    private fun filterTests(query: String) {
-        if (query.isEmpty()) {
-            _uiState.value = UiState.Success(allTests)
-        } else {
-            val filtered = allTests.filter {
+    fun onCategorySelected(category: String) {
+        _selectedCategory.value = category
+        applyFilters()
+    }
+
+    private fun applyFilters() {
+        val query = _searchQuery.value
+        val category = _selectedCategory.value
+
+        var filtered = allTests
+
+        if (category != "All") {
+            filtered = filtered.filter { it.name.equals(category, ignoreCase = true) }
+        }
+
+        if (query.isNotEmpty()) {
+            filtered = filtered.filter {
                 it.name.contains(query, ignoreCase = true) ||
                 it.category.contains(query, ignoreCase = true)
             }
-            _uiState.value = UiState.Success(filtered)
         }
+
+        _uiState.value = UiState.Success(filtered)
     }
 }

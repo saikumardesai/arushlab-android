@@ -7,12 +7,11 @@ import com.arushlab.android.model.TestModel
 @Entity(tableName = "tests")
 data class TestEntity(
     @PrimaryKey
-    val id: String,
+    val id: Int,
     val name: String,
     val price: Double,
     val category: String,
-    val description: String?,
-    val imageUrl: String?
+    val isActive: Boolean
 )
 
 fun TestEntity.toModel(): TestModel {
@@ -21,8 +20,7 @@ fun TestEntity.toModel(): TestModel {
         name = name,
         price = price,
         category = category,
-        description = description,
-        imageUrl = imageUrl
+        isActive = isActive
     )
 }
 
@@ -32,7 +30,6 @@ fun TestModel.toEntity(): TestEntity {
         name = name,
         price = price,
         category = category,
-        description = description,
-        imageUrl = imageUrl
+        isActive = isActive
     )
 }

@@ -48,7 +48,7 @@ class BookingViewModel @Inject constructor(
             val booking = BookingModel(
                 id = trackingId,
                 patientName = patientName,
-                mobileNumber = mobile,
+                phone = mobile,
                 address = address,
                 testName = test.name,
                 status = "Booking Confirmed",

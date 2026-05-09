@@ -66,15 +66,7 @@ fun TestPriceCard(
 
             Spacer(modifier = Modifier.height(Dimens.SpaceSmall))
             
-            if (!test.description.isNullOrEmpty()) {
-                Text(
-                    text = test.description,
-                    style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)),
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Spacer(modifier = Modifier.height(Dimens.SpaceMedium))
-            }
+
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
