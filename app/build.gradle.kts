@@ -78,7 +78,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     // Supabase
-    implementation(libs.supabase.bom)
+    implementation(platform(libs.supabase.bom))
     implementation(libs.supabase.postgrest)
     implementation(libs.supabase.gotrue)
     implementation(libs.ktor.client.okhttp)
@@ -86,7 +86,6 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
